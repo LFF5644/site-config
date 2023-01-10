@@ -1,0 +1,7 @@
+#server/chat/chat
+#server/account/account
+#server/vocabulary/vocabulary
+
+server/account/account.new
+server/serverStorage/serverStorage
+server/projects/projects
