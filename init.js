@@ -297,6 +297,10 @@ const myFistName="Lando";
 				return eval(str);
 			}catch(e){return format;}
 	}
+	globals.functions.jsonParseTry=text=>{
+		try{return JSON.parse(text);}
+		catch(e){return text;}
+	}
 }
 
 {//SET GLOBAL PATH/FILES;
