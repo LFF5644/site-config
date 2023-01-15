@@ -1,6 +1,6 @@
-// Überprüfen, ob Besucher ein Bot ist
+// Überprüfen, ob Besucher ein Bot ist;
 agent_check_bot=/bot|googlebot|crawler|spider|robot|crawling|favicon/i;
-// Überprüfen, ob Besucher mobil ist
+// Überprüfen, ob Besucher mobil ist;
 agent_check_mobil=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i;
 
 const fs=require("fs");
@@ -13,7 +13,7 @@ const myName="LFF = Lando Fernandez Falk (Mein Name),\n5644 = (Mein erstes SIM K
 const myFistName="Lando";
 
 {//SET TMP THINGS;
-	globals.tmp_head = function(title,inp=null,allowDark=true){
+	globals.tmp_head=function(title,inp=null,allowDark=true){
 		log("OLD function tmp_head! please use import!")
 		const date=new Date();
 		const hour=date.getHours()
@@ -45,7 +45,7 @@ const myFistName="Lando";
 		res+=`\t<script src="${globals.vars["file_import.js"]}"></script>`
 		return res;
 	}
-	globals.tmp_footer = function(){
+	globals.tmp_footer=function(){
 
 		return(`<footer>&copy; ${(new Date).getFullYear()} LFF</footer>`);
 	}
@@ -88,7 +88,7 @@ const myFistName="Lando";
 		html+=icon?(`${tabs}<link rel="shortcut icon" href=${icon.includes(" ")?'"'+icon+'"':icon}>\n`):""
 		html+=css?((css.map(url=>`${tabs}<link rel=stylesheet href=${url.includes(" ")?'"'+url+'"':url}>`).join("\n"))+"\n"):""
 		html+=cssDark&&useDark?((cssDark.map(url=>`${tabs}<link rel=stylesheet href=${url.includes(" ")?'"'+url+'"':url}>`).join("\n"))+"\n"):""
-		html+=script?(script.map(url=>`${tabs}<script type=text/javascript src=${url.includes(" ")?'"'+url+'"':url}></script>`).join("\n")+"\n"):""
+		html+=script?(script.map(url=>`${tabs}<script src=${url.includes(" ")?'"'+url+'"':url}></script>`).join("\n")+"\n"):""
 
 		return html;
 	}
@@ -300,6 +300,18 @@ const myFistName="Lando";
 	globals.functions.jsonParseTry=text=>{
 		try{return JSON.parse(text);}
 		catch(e){return text;}
+	}
+	globals.functions.overflowRemove=(text,maxLength,replaceTo="...")=>{
+		const length=text.length;
+		if(length<=maxLength){return text}
+		let t="";
+		let index=0;
+		let newText="";
+		for(t of text){
+			index+=1;
+			newText+=t;
+			if(index>=maxLength){return newText+replaceTo}
+		}
 	}
 }
 
