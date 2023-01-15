@@ -5,3 +5,4 @@
 server/account/account.new
 server/serverStorage/serverStorage
 server/projects/projects
+server/spotify/spotify
