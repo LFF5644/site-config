@@ -2,10 +2,10 @@
 index.html:web/indexHtml/index.html
 
 z:web/listDir.html#/z/
-dir:web/listDir.html
-DIR:web/listDir.html
-ls:web/listDir.html
-LS:web/listDir.html
+dir:web/listDir/listDir.html
+DIR:web/listDir/listDir.html
+ls:web/listDir/listDir.html
+LS:web/listDir/listDir.html
 account:web/account/account.html
 Account:web/account/account.html
 ACCOUNT:web/account/account.html
