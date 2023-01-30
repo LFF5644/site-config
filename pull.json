@@ -1,0 +1,20 @@
+[
+	"config",
+
+	"public/css",
+
+	"public/scripts",
+
+	"public/server/account",
+	"public/server/git",
+	"public/server/projects",
+	"public/server/serverStorage",
+	"public/server/spotify",
+
+	"public/web/account",
+	"public/web/indexHtml",
+	"public/web/listDir",
+	"public/web/serverInfo",
+
+	"public/z"
+]
