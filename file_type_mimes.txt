@@ -15,6 +15,7 @@ apk:application/zip
 gz:application/gzip
 xz:application/x-xz
 mp3:audio/mpeg3
+mp3:video/mp4
 mid:audio/midi
 flac:audio/flac
 pdf:application/pdf
