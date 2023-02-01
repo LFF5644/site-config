@@ -202,10 +202,6 @@ onlinetime/config.ini:/p/OnlineTime/config.ini
 OnlineTime:/p/OnlineTime/index.html
 onlinetime:/p/OnlineTime/index.html
 
-RadioPlayer/.git:/p/RadioPlayer/.git
-radioplayer/.git:/p/RadioPlayer/.git
-RadioPlayer/.git:/p/RadioPlayer/.git
-radioplayer/.git:/p/RadioPlayer/.git
 RadioPlayer/config.ini:/p/RadioPlayer/config.ini
 radioplayer/config.ini:/p/RadioPlayer/config.ini
 RadioPlayer/config.ini:/p/RadioPlayer/config.ini
@@ -239,10 +235,6 @@ soundeffects/config.ini:/p/SoundEffects/config.ini
 SoundEffects:/p/SoundEffects/index.html
 soundeffects:/p/SoundEffects/index.html
 
-Spotify/.git:/p/Spotify/.git
-spotify/.git:/p/Spotify/.git
-Spotify/.git:/p/Spotify/.git
-spotify/.git:/p/Spotify/.git
 Spotify/config.ini:/p/Spotify/config.ini
 spotify/config.ini:/p/Spotify/config.ini
 Spotify/config.ini:/p/Spotify/config.ini
