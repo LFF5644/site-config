@@ -362,28 +362,3 @@ const myFistName="Lando";
 	globals.functions.WriteFile("config/path_aliases.txt",pathAlias);
 	log("EDIT 'path_aliases.txt' FINISH!")
 }
-
-loadFromGit:{//Sync git prjects;
-	if(os.hostname()=="LFF-MiniBook"){break loadFromGit;}
-	let dir;
-	const child_process=require("child_process");
-	const {
-		ReadDir,
-		ReadFile,
-		GetLine,
-	}=globals.functions;
-	for(dir of ReadDir("public/p")){
-		dir="public/p/"+dir;
-		let config=ReadFile(dir+"/config.ini");
-		if(!config){continue;}
-
-		const git=GetLine(config,"git","simple");
-		const gitRepository=GetLine(config,"gitRepository","simple");
-		
-		if(git=="ERROR lineRead is not in fileText!"){continue;}
-		if(gitRepository=="ERROR lineRead is not in fileText!"){continue;}
-		
-		log("git pull...");
-		child_process.execSync(`cd ${dir}; git pull`);
-	}
-}
