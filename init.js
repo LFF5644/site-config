@@ -177,9 +177,9 @@ const myFistName="Lando";
 		catch(e){res=false;}
 		return res;
 	}
-	globals.functions.WriteFile=function(fileName,fileData=""){
+	globals.functions.WriteFile=function(fileName,fileData="",coding="utf-8"){
 		try{
-			const file=fs.writeFileSync(fileName,String(fileData));
+			const file=fs.writeFileSync(fileName,String(fileData),coding);
 			//log("fn: [WriteFile]: write file '"+fileName+"'");
 			return file;
 		}catch(e){
@@ -201,10 +201,10 @@ const myFistName="Lando";
 		return(fs.readdirSync(dir));
 	}
 	globals.functions.decodeBase64=function(textToDecode,to="utf8"){
-		return(String(new Buffer(textToDecode,"base64").toString(to)));
+		return(String(Buffer.from(textToDecode,"base64").toString(to)));
 	}
 	globals.functions.encodeBase64=function(textToEncode){
-		return(String(new Buffer(textToEncode).toString("base64")));
+		return(String(Buffer.from(textToEncode).toString("base64")));
 	}
 	globals.functions.codeify=function(text){
 		return(globals.functions.REPLACEALL(String(text),[["&","&amp;"],["<","&lt;"],[">","&gt;"],['"',"&quot;"]]));
