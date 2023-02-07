@@ -1,6 +1,10 @@
 {
 	"default":[],
 	"friend":[],
-	"admin":[],
-	"owner":[]
+	"admin":[
+		"ownerActions-use"
+	],
+	"owner":[
+		"ownerActions-use"
+	]
 }

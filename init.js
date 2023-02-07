@@ -83,12 +83,14 @@ const myFistName="Lando";
 		}
 
 		let html="";
+		html+="<!--Hello Developer!-->\n";
 		html+=title?`${tabs}<title>${title}</title>\n`:"";
 		html+=tabs+`<meta charset=utf-8>\n${tabs}<meta name=viewport content="width=device-width">\n`;
-		html+=icon?(`${tabs}<link rel="shortcut icon" href=${icon.includes(" ")?'"'+icon+'"':icon}>\n`):""
-		html+=css?((css.map(url=>`${tabs}<link rel=stylesheet href=${url.includes(" ")?'"'+url+'"':url}>`).join("\n"))+"\n"):""
-		html+=cssDark&&useDark?((cssDark.map(url=>`${tabs}<link rel=stylesheet href=${url.includes(" ")?'"'+url+'"':url}>`).join("\n"))+"\n"):""
-		html+=script?(script.map(url=>`${tabs}<script src=${url.includes(" ")?'"'+url+'"':url}></script>`).join("\n")+"\n"):""
+		html+=icon?(`${tabs}<link rel="shortcut icon" href=${(icon.includes(" ")||icon.includes("="))?'"'+icon+'"':icon}>\n`):""
+		html+=css?((css.map(url=>`${tabs}<link rel=stylesheet href=${(url.includes(" ")||url.includes("="))?'"'+url+'"':url}>`).join("\n"))+"\n"):""
+		html+=cssDark&&useDark?((cssDark.map(url=>`${tabs}<link rel=stylesheet href=${(url.includes(" ")||url.includes("="))?'"'+url+'"':url}>`).join("\n"))+"\n"):""
+		html+=script?(script.map(url=>`${tabs}<script src=${(url.includes(" ")||url.includes("="))?'"'+url+'"':url}></script>`).join("\n")+"\n"):""
+		html=html.trim();
 
 		return html;
 	}
