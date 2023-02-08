@@ -1,24 +1,62 @@
 <!DOCTYPE html>
 <html>
+<title>[code] [msg]</title>
 <meta charset="utf-8">
-<body style="font-family: Arial;text-align: center;">
-<center>
-<h1>HTTP 
-	<span style="color:red;">[code]</span> 
+<meta name=viewport content="width=device-width">
+<body style="font-family: Arial;">
+
+<h1>
+	HTTP
+	<span style="color:red;">
+		[code]
+	</span>
 	[msg]
 </h1>
-<hr style="max-width:600px;">
-<p style="font-size:1.2em;">
-	<span style="color:red;">RTJSCOMP</span> 
+
+<p><i>[info]</i></p>
+<ul id="fix"></ul>
+
+<hr>
+<footer>
+<p>
+	<span style="color:red;">
+		RTJSCOMP
+	</span> 
 	ON 
 	<a href="/">
-		<script>document.write(String(location.host).toUpperCase())</script>
-	</a><br>
-	<span style="color:green;">Server</span> 
+		<script>
+			document.write(String(location.host).toUpperCase())
+		</script>
+	</a>
+	<br>
+	<span style="color:green;">
+		Server
+	</span> 
 	By 
-	<attr style="color:green;" title="LFF5644 or LFF">Lando Fernandez-Falk</attr>
+	<attr 
+		style="color:green;"
+		title="LFF5644 or LFF"
+	>
+		Lando Fernandez-Falk
+	</attr>
 </p>
-</center>
-<script>console.log("HTTP [code]: [msg]")</script>
+</footer>
+
+<script>
+	console.log("HTTP [code]: [msg]");
+
+	const code=[code];
+	const msg="[msg]";
+	const info="[info]";
+	const fix=[fix];
+
+	const element_fix=document.getElementById("fix");
+
+	if(fix.length>0){
+		element_fix.innerHTML=fix
+			.map(item=>"<li>"+item+"</li>")
+			.join("\n")
+	}
+	</script>
 </body>
 </html>
