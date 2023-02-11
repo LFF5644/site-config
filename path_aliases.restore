@@ -9,7 +9,8 @@ LS:web/listDir/listDir.html
 account:web/account/account.html
 Account:web/account/account.html
 ACCOUNT:web/account/account.html
-
+currently-playing:web/spotifyHtml/index.html
+owner-actions:web/ownerActions/index.html
 
 home:web/homepage.html
 HOME:web/homepage.html
