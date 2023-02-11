@@ -1,10 +1,8 @@
 {
 	"default":[],
 	"friend":[],
-	"admin":[
-		"ownerActions-use"
-	],
 	"owner":[
-		"ownerActions-use"
+		"ownerActions-use",
+		"spotifyApi-changePlayback"
 	]
 }
