@@ -14,7 +14,9 @@
 	"public/web/account",
 	"public/web/indexHtml",
 	"public/web/listDir",
+	"public/web/ownerActions",
 	"public/web/serverInfo",
+	"public/web/spotifyHtml",
 
 	"public/z"
 ]
