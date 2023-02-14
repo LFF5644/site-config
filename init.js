@@ -67,7 +67,7 @@ const myFistName="Lando";
 			icon="/favicon.png",
 			title,
 			cssDark=["/css/main.dark.css"],
-			tabs=1,
+			tabs=2,
 		}=data;
 
 		tabs=tabs?Array(tabs).join("\t")+"\t":"";
