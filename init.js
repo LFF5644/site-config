@@ -62,11 +62,13 @@ const myFistName="Lando";
 			input:{
 				darkMode,
 			},
-			css=["/css/main.css?imports=*"],
-			script=["/scripts/import.js?imports=*"],
-			icon="/favicon.png",
 			title,
+			icon="/favicon.png",
+			icons,
+			manifest,
+			css=["/css/main.css?imports=*"],
 			cssDark=["/css/main.dark.css"],
+			script=["/scripts/import.js?imports=*"],
 			tabs=2,
 		}=data;
 
@@ -81,15 +83,21 @@ const myFistName="Lando";
 				useDark=true;
 			}
 		}
-
+		if(icons){
+			icons=Object.keys(icons)
+				.map(key=>`${tabs}<link rel=icon sizes=${key.split(" ").join("")} href=${(icons[key].includes(" ")||icons[key].includes("="))?'"'+icons[key]+'"':icons[key]}>`)
+				.join("\n")
+		}
 		let html="";
 		html+="<!--Hello Developer!-->\n";
 		html+=title?`${tabs}<title>${title}</title>\n`:"";
 		html+=tabs+`<meta charset=utf-8>\n${tabs}<meta name=viewport content="width=device-width">\n`;
-		html+=icon?(`${tabs}<link rel="shortcut icon" href=${(icon.includes(" ")||icon.includes("="))?'"'+icon+'"':icon}>\n`):""
-		html+=css?((css.map(url=>`${tabs}<link rel=stylesheet href=${(url.includes(" ")||url.includes("="))?'"'+url+'"':url}>`).join("\n"))+"\n"):""
-		html+=cssDark&&useDark?((cssDark.map(url=>`${tabs}<link rel=stylesheet href=${(url.includes(" ")||url.includes("="))?'"'+url+'"':url}>`).join("\n"))+"\n"):""
-		html+=script?(script.map(url=>`${tabs}<script src=${(url.includes(" ")||url.includes("="))?'"'+url+'"':url}></script>`).join("\n")+"\n"):""
+		html+=icon?(`${tabs}<link rel="shortcut icon" href=${(icon.includes(" ")||icon.includes("="))?'"'+icon+'"':icon}>\n`):"";
+		html+=icons?icons+"\n":"";
+		html+=manifest?(`${tabs}<link rel=manifest href=${(manifest.includes(" ")||manifest.includes("="))?'"'+manifest+'"':manifest}>\n`):"";
+		html+=css?((css.map(url=>`${tabs}<link rel=stylesheet href=${(url.includes(" ")||url.includes("="))?'"'+url+'"':url}>`).join("\n"))+"\n"):"";
+		html+=cssDark&&useDark?((cssDark.map(url=>`${tabs}<link rel=stylesheet href=${(url.includes(" ")||url.includes("="))?'"'+url+'"':url}>`).join("\n"))+"\n"):"";
+		html+=script?(script.map(url=>`${tabs}<script src=${(url.includes(" ")||url.includes("="))?'"'+url+'"':url}></script>`).join("\n")+"\n"):"";
 		html=html.trim();
 
 		return html;
