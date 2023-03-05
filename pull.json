@@ -14,6 +14,7 @@
 	"public/web/account",
 	"public/web/indexHtml",
 	"public/web/listDir",
+	"public/web/minecraftServerInfo",
 	"public/web/ownerActions",
 	"public/web/serverInfo",
 	"public/web/spotifyHtml",
