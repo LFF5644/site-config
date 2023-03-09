@@ -7,3 +7,4 @@ server/serverStorage/serverStorage
 server/projects/projects
 server/spotify/spotify
 web/minecraftServerInfo/minecraftServerInfo
+p/Chat/chat
