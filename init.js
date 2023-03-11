@@ -14,7 +14,7 @@ const myFistName="Lando";
 
 {//SET TMP THINGS;
 	globals.tmp_head=function(title,inp=null,allowDark=true){
-		log("OLD function tmp_head! please use import!")
+		log("OLD function tmp_head! please use importHead!")
 		const date=new Date();
 		const hour=date.getHours()
 		let darkStyle=false;
@@ -40,14 +40,11 @@ const myFistName="Lando";
 		res+=`\t<link rel="shortcut icon" href=/favicon.png>\n`
 		res+=`\t<meta charset=utf-8>\n`
 		res+=`\t<meta name=viewport content="width=device-width">\n`
+		res+=`\t<meta name=robots content=index>\n`
 		res+=`\t<link rel=stylesheet href=/css/main.css>\n`
 		res+=darkStyle;
 		res+=`\t<script src="${globals.vars["file_import.js"]}"></script>`
 		return res;
-	}
-	globals.tmp_footer=function(){
-
-		return(`<footer>&copy; ${(new Date).getFullYear()} LFF</footer>`);
 	}
 	globals.tmp_nameAsA=function(attrBoot=null){
 		if(attrBoot==null){attrBoot=""}else{attrBoot=" "+attrBoot}
@@ -69,6 +66,7 @@ const myFistName="Lando";
 			css=["/css/main.css?imports=*"],
 			cssDark=["/css/main.dark.css"],
 			script=["/scripts/import.js?imports=*"],
+			botIndex=true,
 			tabs=2,
 		}=data;
 
@@ -92,6 +90,7 @@ const myFistName="Lando";
 		html+="<!--Hello Developer!-->\n";
 		html+=title?`${tabs}<title>${title}</title>\n`:"";
 		html+=tabs+`<meta charset=utf-8>\n${tabs}<meta name=viewport content="width=device-width">\n`;
+		html+=botIndex?`${tabs}<meta name=robots content=index>\n`:""
 		html+=icon?(`${tabs}<link rel="shortcut icon" href=${(icon.includes(" ")||icon.includes("="))?'"'+icon+'"':icon}>\n`):"";
 		html+=icons?icons+"\n":"";
 		html+=manifest?(`${tabs}<link rel=manifest href=${(manifest.includes(" ")||manifest.includes("="))?'"'+manifest+'"':manifest}>\n`):"";
