@@ -89,7 +89,7 @@ const myFistName="Lando";
 		let html="";
 		html+="<!--Hello Developer!-->\n";
 		html+=title?`${tabs}<title>${title}</title>\n`:"";
-		html+=tabs+`<meta charset=utf-8>\n${tabs}<meta name=viewport content="width=device-width">\n`;
+		html+=tabs+`<meta charset=utf-8>\n${tabs}<meta name=viewport content="width=device-width, initial-scale=1.0">\n`;
 		html+=botIndex?`${tabs}<meta name=robots content=index>\n`:""
 		html+=icon?(`${tabs}<link rel="shortcut icon" href=${(icon.includes(" ")||icon.includes("="))?'"'+icon+'"':icon}>\n`):"";
 		html+=icons?icons+"\n":"";
