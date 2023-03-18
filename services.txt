@@ -9,3 +9,4 @@ server/spotify/spotify
 web/minecraftServerInfo/minecraftServerInfo
 p/Chat/server
 p/TODO/server
+p/TODO/storage
