@@ -20,3 +20,5 @@ mid:audio/midi
 flac:audio/flac
 pdf:application/pdf
 stream:text/event-stream
+svg:image/svg+xml
+gif:image/gif
