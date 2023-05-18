@@ -1,8 +1,13 @@
 {
 	"default":[],
 	"friend":[],
+	"family":[
+		"spotifyApi-changePlayback",
+		"musikPlayer-changePlayback"
+	],
 	"owner":[
 		"ownerActions-use",
-		"spotifyApi-changePlayback"
+		"spotifyApi-changePlayback",
+		"musikPlayer-changePlayback"
 	]
 }
