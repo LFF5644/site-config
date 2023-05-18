@@ -5,7 +5,8 @@
 server/account/account.new
 server/serverStorage/serverStorage
 server/projects/projects
-server/spotify/spotify
+server/currently-playing/musikPlayer
+server/currently-playing/spotify
 web/minecraftServerInfo/minecraftServerInfo
 p/Chat/server
 p/TODO/storage
