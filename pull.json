@@ -6,18 +6,18 @@
 	"public/scripts",
 
 	"public/server/account",
+	"public/server/currently-playing",
 	"public/server/git",
 	"public/server/projects",
 	"public/server/serverStorage",
-	"public/server/spotify",
 
 	"public/web/account",
+	"public/web/currently-playing",
 	"public/web/indexHtml",
 	"public/web/listDir",
 	"public/web/minecraftServerInfo",
 	"public/web/ownerActions",
 	"public/web/serverInfo",
-	"public/web/spotifyHtml",
 
 	"public/z"
 ]
