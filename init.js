@@ -56,18 +56,16 @@ const myFistName="Lando";
 	globals.functions={};
 	globals.functions.importHead=data=>{
 		let {
-			input:{
-				darkMode,
-			},
-			title,
-			icon="/favicon.png",
-			icons,
-			manifest,
+			botIndex=true,
 			css=["/css/main.css?imports=*"],
 			cssDark=["/css/main.dark.css"],
-			script=["/scripts/import.js?imports=*"],
-			botIndex=true,
+			icon="/favicon.png",
+			icons,
+			input:{darkMode,bot},
+			manifest,
+			script=[],
 			tabs=2,
+			title,
 		}=data;
 
 		tabs=tabs?Array(tabs).join("\t")+"\t":"";
@@ -87,10 +85,10 @@ const myFistName="Lando";
 				.join("\n")
 		}
 		let html="";
-		html+="<!--Hello Developer!-->\n";
+		html+=`<!--Hello ${bot?"Bot":"Developer"}!-->\n`;
 		html+=title?`${tabs}<title>${title}</title>\n`:"";
 		html+=tabs+`<meta charset=utf-8>\n${tabs}<meta name=viewport content="width=device-width, initial-scale=1.0">\n`;
-		html+=botIndex?`${tabs}<meta name=robots content=index>\n`:""
+		html+=typeof(botIndex)==="boolean"?`${tabs}<meta name=robots content=${botIndex?"":"no"}index>\n`:""
 		html+=icon?(`${tabs}<link rel="shortcut icon" href=${(icon.includes(" ")||icon.includes("="))?'"'+icon+'"':icon}>\n`):"";
 		html+=icons?icons+"\n":"";
 		html+=manifest?(`${tabs}<link rel=manifest href=${(manifest.includes(" ")||manifest.includes("="))?'"'+manifest+'"':manifest}>\n`):"";
