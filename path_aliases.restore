@@ -1,14 +1,8 @@
 :web/indexHtml/index.html
 index.html:web/indexHtml/index.html
 
-z:web/listDir.html#/z/
-dir:web/listDir/listDir.html
-DIR:web/listDir/listDir.html
-ls:web/listDir/listDir.html
-LS:web/listDir/listDir.html
+ls:web/listDir/index.html
 account:web/account/account.html
-Account:web/account/account.html
-ACCOUNT:web/account/account.html
 currently-playing:web/currently-playing/index.html
 owner-actions:web/ownerActions/index.html
 minecraftServerInfo:web/minecraftServerInfo/index.html
