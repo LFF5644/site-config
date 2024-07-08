@@ -12,3 +12,7 @@ web/listDir/server
 p/Chat/server
 p/TODO/storage
 p/TODO/server
+p/FamilyPlaner/server
+p/DeviceManager/server
+
+#server/account/account.v3

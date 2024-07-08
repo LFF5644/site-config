@@ -6,6 +6,7 @@ account:web/account/account.html
 currently-playing:web/currently-playing/index.html
 owner-actions:web/ownerActions/index.html
 minecraftServerInfo:web/minecraftServerInfo/index.html
+upload:web/upload/index.html
 
 home:web/homepage.html
 HOME:web/homepage.html

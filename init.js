@@ -61,11 +61,13 @@ const myFistName="Lando";
 			cssDark=["/css/main.dark.css"],
 			icon="/favicon.png",
 			icons,
-			input:{darkMode,bot},
+			input:{darkMode,bot,legacy=false,watch},
 			manifest,
 			script=[],
+			scriptLegacy=null,
 			tabs=2,
 			title,
+			watchAllow=false,
 		}=data;
 
 		tabs=tabs?Array(tabs).join("\t")+"\t":"";
@@ -84,6 +86,9 @@ const myFistName="Lando";
 				.map(key=>`${tabs}<link rel=icon sizes=${key.split(" ").join("")} href=${(icons[key].includes(" ")||icons[key].includes("="))?'"'+icons[key]+'"':icons[key]}>`)
 				.join("\n")
 		}
+
+		if(legacy&&scriptLegacy) script=scriptLegacy;
+
 		let html="";
 		html+=`<!--Hello ${bot?"Bot":"Developer"}!-->\n`;
 		html+=title?`${tabs}<title>${title}</title>\n`:"";
@@ -95,6 +100,7 @@ const myFistName="Lando";
 		html+=css?((css.map(url=>`${tabs}<link rel=stylesheet href=${(url.includes(" ")||url.includes("="))?'"'+url+'"':url}>`).join("\n"))+"\n"):"";
 		html+=cssDark&&useDark?((cssDark.map(url=>`${tabs}<link rel=stylesheet href=${(url.includes(" ")||url.includes("="))?'"'+url+'"':url}>`).join("\n"))+"\n"):"";
 		html+=script?(script.map(url=>`${tabs}<script src=${(url.includes(" ")||url.includes("="))?'"'+url+'"':url}></script>`).join("\n")+"\n"):"";
+		html+=(watchAllow&&Number(watch)&&watch>2&&!isNaN(watch))?`${tabs}<meta http-equiv=refresh content=${watch}>`:"";
 		html=html.trim();
 
 		return html;
