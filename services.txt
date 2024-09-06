@@ -8,7 +8,8 @@ server/projects/projects
 server/currently-playing/musikPlayer
 server/currently-playing/spotify
 web/minecraftServerInfo/minecraftServerInfo
-web/listDir/server
+#web/listDir/server
+web/school/school
 p/Chat/server
 p/TODO/storage
 p/TODO/server
