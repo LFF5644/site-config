@@ -7,6 +7,8 @@ currently-playing:web/currently-playing/index.html
 owner-actions:web/ownerActions/index.html
 minecraftServerInfo:web/minecraftServerInfo/index.html
 upload:web/upload/index.html
+school-class:web/school/index.html
+serverInfo:web/serverInfo/serverInfo.html
 
 home:web/homepage.html
 HOME:web/homepage.html

@@ -14,7 +14,7 @@ const myFistName="Lando";
 
 {//SET TMP THINGS;
 	globals.tmp_head=function(title,inp=null,allowDark=true){
-		log("OLD function tmp_head! please use importHead!")
+		//log("OLD function tmp_head! please use importHead!")
 		const date=new Date();
 		const hour=date.getHours()
 		let darkStyle=false;
@@ -104,6 +104,17 @@ const myFistName="Lando";
 		html=html.trim();
 
 		return html;
+	}
+	globals.functions.allowedPath=({request,response},allowedUrl)=>{
+		if(request.url.startsWith(allowedUrl)) return;
+
+		let url=allowedUrl;
+
+		if(request.url.includes("#")) url=url+"#"+request.url.split("#")[1];
+		else if(request.url.includes("?")) url=url+"?"+request.url.split("?")[1];
+
+		response.setHeader("Location",url);
+		throw 302;
 	}
 	globals.functions.GetDark=function(inp=null){
 		let darkStyle=false;
