@@ -8,6 +8,7 @@ owner-actions:web/ownerActions/index.html
 minecraftServerInfo:web/minecraftServerInfo/index.html
 upload:web/upload/index.html
 school-class:web/school/index.html
+school-class/homework.jpg:/web/school/data/HA-Tafel.jpg
 serverInfo:web/serverInfo/serverInfo.html
 
 home:web/homepage.html
