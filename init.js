@@ -56,12 +56,14 @@ const myFistName="Lando";
 	globals.functions={};
 	globals.functions.importHead=data=>{
 		let {
-			botIndex=true,
+			botIndexAllow=true,
 			css=["/css/main.css?imports=*"],
 			cssDark=["/css/main.dark.css"],
+			description,
 			icon="/favicon.png",
 			icons,
 			input:{darkMode,bot,legacy=false,watch},
+			keywords,
 			manifest,
 			script=[],
 			scriptLegacy=null,
@@ -93,7 +95,9 @@ const myFistName="Lando";
 		html+=`<!--Hello ${bot?"Bot":"Developer"}!-->\n`;
 		html+=title?`${tabs}<title>${title}</title>\n`:"";
 		html+=tabs+`<meta charset=utf-8>\n${tabs}<meta name=viewport content="width=device-width, initial-scale=1.0">\n`;
-		html+=typeof(botIndex)==="boolean"?`${tabs}<meta name=robots content=${botIndex?"":"no"}index>\n`:""
+		html+=typeof(botIndexAllow)==="boolean"?`${tabs}<meta name=robots content=${botIndexAllow?"":"no"}index>\n`:""
+		html+=description?`${tabs}<meta name=description content=${(description.includes(" ")||description.includes("="))?'"'+description+'"':description}>\n`:"";
+		html+=(typeof(keywords)==="object"&&keywords.length)?`${tabs}<meta name=keywords content="${keywords.join(", ")}">\n`:""
 		html+=icon?(`${tabs}<link rel="shortcut icon" href=${(icon.includes(" ")||icon.includes("="))?'"'+icon+'"':icon}>\n`):"";
 		html+=icons?icons+"\n":"";
 		html+=manifest?(`${tabs}<link rel=manifest href=${(manifest.includes(" ")||manifest.includes("="))?'"'+manifest+'"':manifest}>\n`):"";
