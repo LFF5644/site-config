@@ -15,5 +15,6 @@ p/TODO/storage
 p/TODO/server
 p/FamilyPlaner/server
 p/DeviceManager/server
+p/Weather/weather
 
 #server/account/account.v3
