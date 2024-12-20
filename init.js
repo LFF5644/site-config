@@ -79,7 +79,7 @@ const myFistName="Lando";
 		else if(darkMode=="auto"||!darkMode){
 			const date=new Date();
 			const hour=date.getHours();
-			if(hour>=19||hour<=8){
+			if(hour>=16||hour<=8){
 				useDark=true;
 			}
 		}
