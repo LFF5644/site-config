@@ -1,6 +1,10 @@
 {
 	"default":[],
-	"friend":[],
+	"buddy":[],
+	"friend":[
+		"spotifyApi-changePlayback",
+                "musikPlayer-changePlayback"
+	],
 	"family":[
 		"spotifyApi-changePlayback",
 		"musikPlayer-changePlayback"
