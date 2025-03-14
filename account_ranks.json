@@ -3,15 +3,26 @@
 	"buddy":[],
 	"friend":[
 		"spotifyApi-changePlayback",
-                "musikPlayer-changePlayback"
+		"musikPlayer-changePlayback",
+		"wakeOnLan-update",
+		"controller-view-callState",
+		"tplinkTapo-update"
 	],
 	"family":[
 		"spotifyApi-changePlayback",
-		"musikPlayer-changePlayback"
+		"musikPlayer-changePlayback",
+		"wakeOnLan-wake",
+		"wakeOnLan-update",
+		"tplinkTapo-update"
 	],
 	"owner":[
 		"ownerActions-use",
 		"spotifyApi-changePlayback",
-		"musikPlayer-changePlayback"
+		"musikPlayer-changePlayback",
+		"wakeOnLan-wake",
+		"wakeOnLan-update",
+		"controller-view-callState",
+		"tplinkTapo-update",
+		"tplinkTapo-changeState"
 	]
 }
