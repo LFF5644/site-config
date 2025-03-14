@@ -7,9 +7,14 @@ server/serverStorage/serverStorage
 server/projects/projects
 server/currently-playing/musikPlayer
 server/currently-playing/spotify
+server/controller/controller
+web/blog/blog
 web/minecraftServerInfo/minecraftServerInfo
 #web/listDir/server
 web/school/school
+web/wakeOnLan/wakeOnLan
+web/cams/cams
+web/tplink/tapo
 p/Chat/server
 p/TODO/storage
 p/TODO/server

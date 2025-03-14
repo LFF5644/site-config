@@ -1,0 +1,14 @@
+{
+	"email": "chinchilla5644@gmail.com",
+	"password": "hexi-041829093809!",
+	"devices":[
+		["F0-09-0D-BD-3D-2D","192.168.178.25","P100","player","CD-Player"],
+		["F0-09-0D-BD-38-FC","192.168.178.80","P100","box","Verstärler"],
+		["F0-09-0D-BD-33-1A","192.168.178.81","P100","discoLight","Disco-Kugel"],
+		["F0-09-0D-BD-31-27","192.168.178.21","P100","balconyLight","Balkon-Lichterkette"],
+		["F0-09-0D-BD-3C-F7","192.168.178.23","P100","lightString","Lichterkette"],
+		["F0-09-0D-BD-30-D7","192.168.178.78","P100","desktopLight","Schreibtisch-Lampe"],
+		["24-2F-D0-4F-CF-1B","192.168.178.71","P110","serverPower","Server-Power"],
+		["24-2F-D0-4F-A0-44","192.168.178.72","P110","desktopPower","Desktop-Power"]
+	]
+}

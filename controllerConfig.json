@@ -1,0 +1,14 @@
+{
+	"devices":[
+		{
+			"name": "Debugger",
+			"tokens":["lff5644isTheAdmin"]
+		},
+		{
+			"name": "LFF-A3",
+			"tokens":["wjhrgw9oe85guh","ezgye46dt"],
+			"model": "SM-A320FL",
+			"type": "phone"
+		}
+	]
+}

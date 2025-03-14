@@ -9,7 +9,7 @@ const xxhash=require("xxhash");
 const useragent=require("useragent");
 
 const myShortName="LFF5644";
-const myName="LFF = Lando Fernandez Falk (Mein Name),\n5644 = (Mein erstes SIM Karten Passwort)";
+const myName="Lando Fernandez-Falk";
 const myFistName="Lando";
 
 {//SET TMP THINGS;
@@ -110,6 +110,7 @@ const myFistName="Lando";
 		return html;
 	}
 	globals.functions.allowedPath=({request,response},allowedUrl)=>{
+		// wornt work in services just in dynamic rtjs files ;)
 		if(request.url.startsWith(allowedUrl)) return;
 
 		let url=allowedUrl;
@@ -225,6 +226,70 @@ const myFistName="Lando";
 			return false;
 		}
 	}
+	globals.functions.readFileAsync=function(...args){return new Promise(resolve=>{
+		fs.readFile(...args,(err,data)=>{
+			if(err){console.log(err);resolve(null);return;};
+			resolve(data);
+			return;
+		});
+	})}
+	globals.functions.renameAsync=function(oldPath,newPath){return new Promise((resolve,reject)=>{
+		fs.rename(oldPath,newPath,error=>{
+			if(error) reject(error);
+			else resolve();
+			return;
+		});
+	})}
+	globals.functions.rmFileAsync=function(...args){return new Promise(resolve=>{
+		fs.rm(...args,(err)=>{
+			if(err){resolve(false);return;};
+			resolve(true);
+			return;
+		});
+	})}
+	globals.functions.rmDirAsync=function(...args){return new Promise(resolve=>{
+		fs.rmdir(...args,(err)=>{
+			if(err){console.log(err);resolve(false);return}
+			resolve(true);
+			return;
+		});
+	})}
+	globals.functions.writeFileAsync=function(...args){return new Promise(resolve=>{
+		fs.writeFile(...args,(err)=>{
+			if(err) console.log(err);
+			resolve(err);
+			return;
+		});
+	})}
+	globals.functions.readJsonFileAsync=function(path){return new Promise(async resolve=>{
+		const file=await globals.functions.readFileAsync(path,"utf-8")
+		if(!file){
+			resolve(null);
+			return;
+		}
+		try{
+			resolve(JSON.parse(file));
+			return;
+		}catch(e){
+			resolve(null);
+			return;
+		}
+	})}
+	globals.functions.writeJsonFileAsync=function(path,data){
+		data=JSON.stringify(data,null,"\t")+"\n";
+		return globals.functions.writeFileAsync(path,data,"utf-8");
+	}
+	globals.functions.existsAsync=function(path){return new Promise(resolve=>{
+		fs.exists(path,resolve);
+	})}
+	globals.functions.createDirAsync=function(...args){return new Promise(resolve=>{
+		try{
+			fs.mkdir(...args,()=>resolve());
+		}catch(e){
+			resolve(false);
+			return;
+		}
+	})}
 	globals.functions.ReadDir=function(dir){
 		return(fs.readdirSync(dir));
 	}
