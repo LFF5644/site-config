@@ -12,18 +12,20 @@ const myShortName="LFF5644";
 const myName="Lando Fernandez-Falk";
 const myFistName="Lando";
 
+const darkEnabledHours=[19,6]
+
 {//SET TMP THINGS;
 	globals.tmp_head=function(title,inp=null,allowDark=true){
 		//log("OLD function tmp_head! please use importHead!")
 		const date=new Date();
 		const hour=date.getHours()
 		let darkStyle=false;
-		if(hour>=19||hour<=8){
+		if(hour>=darkEnabledHours[0]||hour<=darkEnabledHours[1]){
 			darkStyle=true;
 		}
 		if(inp!=null){
-			if(inp.dark=="true"||inp.dark=="1"){darkStyle=true}
-			else if(inp.dark=="false"||inp.dark=="0"){darkStyle=false}
+			if(inp.darkMode=="always"||inp.dark=="1"){darkStyle=true}
+			else if(inp.darkMode=="never"||inp.dark=="0"){darkStyle=false}
 		}
 
 		if(darkStyle){
@@ -79,9 +81,7 @@ const myFistName="Lando";
 		else if(darkMode=="auto"||!darkMode){
 			const date=new Date();
 			const hour=date.getHours();
-			if(hour>=16||hour<=8){
-				useDark=true;
-			}
+			if(hour>=darkEnabledHours[0]||hour<=darkEnabledHours[1]) useDark=true;
 		}
 		if(icons){
 			icons=Object.keys(icons)
@@ -93,6 +93,7 @@ const myFistName="Lando";
 
 		let html="";
 		html+=`<!--Hello ${bot?"Bot":"Developer"}!-->\n`;
+		html+=bot&&useDark?"<!--I disabled Dark-Mode for Bots!-->\n":"";
 		html+=title?`${tabs}<title>${title}</title>\n`:"";
 		html+=tabs+`<meta charset=utf-8>\n${tabs}<meta name=viewport content="width=device-width, initial-scale=1.0">\n`;
 		html+=typeof(botIndexAllow)==="boolean"?`${tabs}<meta name=robots content=${botIndexAllow?"":"no"}index>\n`:""
@@ -125,14 +126,14 @@ const myFistName="Lando";
 		let darkStyle=false;
 		let date=new Date();
 		let hour=date.getHours();
-		if(hour>=19||hour<=8){
+		if(hour>=darkEnabledHours[0]||hour<=darkEnabledHours[1]){
 			darkStyle=true;
 		}
 		if(inp!=null){
-			if(inp.dark=="true"||inp.dark=="1"){darkStyle=true}
-			else if(inp.dark=="false"||inp.dark=="0"){darkStyle=false}
+			if(inp.darkMode==="always") darkStyle=true;
+			else if(inp.darkMode==="never") darkStyle=false;
 		}
-		return(darkStyle)
+		return darkStyle;
 	}
 	globals.functions.ConfigLine=function(fileText,cange){
 		let newFile="";
