@@ -10,11 +10,12 @@ server/currently-playing/spotify
 server/controller/controller
 web/blog/blog
 web/minecraftServerInfo/minecraftServerInfo
-#web/listDir/server
+web/listDir/server
 web/school/school
 web/wakeOnLan/wakeOnLan
-web/cams/cams
+#web/cams/cams
 web/tplink/tapo
+web/tasker/tasker
 p/Chat/server
 p/TODO/storage
 p/TODO/server
