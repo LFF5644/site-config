@@ -23,6 +23,11 @@
 		"wakeOnLan-update",
 		"controller-view-callState",
 		"tplinkTapo-update",
-		"tplinkTapo-changeState"
+		"tplinkTapo-changeState",
+
+		"blog-post",
+		"blog-overwriteArticle",
+		"blog-editSaved",
+		"blog-editor"
 	]
 }
