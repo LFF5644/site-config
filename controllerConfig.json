@@ -2,13 +2,23 @@
 	"devices":[
 		{
 			"name": "Debugger",
+			"id": "admin",
+			"supports": [],
 			"tokens":["lff5644isTheAdmin"]
 		},
 		{
 			"name": "LFF-A3",
+			"id":"lff-a3",
 			"tokens":["wjhrgw9oe85guh","ezgye46dt"],
 			"model": "SM-A320FL",
-			"type": "phone"
+			"type": "phone",
+			"supports": [
+				"battery",
+				"call-state",
+				"shutdown-info",
+				"startup-info",
+				"screen-state"
+			]
 		}
 	]
 }
