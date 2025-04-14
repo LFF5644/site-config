@@ -16,6 +16,8 @@ web/wakeOnLan/wakeOnLan
 #web/cams/cams
 web/tplink/tapo
 web/tasker/tasker
+web/player/player
+web/player/server
 p/Chat/server
 p/TODO/storage
 p/TODO/server

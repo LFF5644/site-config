@@ -11,10 +11,12 @@ school-class:web/school/index.html
 school-class/homework.jpg:/web/school/data/HA-Tafel.jpg
 serverInfo:web/serverInfo/serverInfo.html
 
+raw/player.event:web/player/get.api
+
 blog/editor:web/blog/editor.html
 blog:web/blog/article.html
-blog/get/*:web/blog/get.api
-blog/*:web/blog/article.html
+blog/get/*id/*file:web/blog/get.api
+blog/*folder:web/blog/article.html
 
 home:web/homepage.html
 HOME:web/homepage.html

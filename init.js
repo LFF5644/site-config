@@ -12,7 +12,9 @@ const myShortName="LFF5644";
 const myName="Lando Fernandez-Falk";
 const myFistName="Lando";
 
-const darkEnabledHours=[19,6]
+const darkEnabledHours=[19,6];
+
+if(typeof(log)==="undefined") log=rtjscomp.log;
 
 {//SET TMP THINGS;
 	globals.tmp_head=function(title,inp=null,allowDark=true){
