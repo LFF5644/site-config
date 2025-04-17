@@ -14,6 +14,10 @@ const myFistName="Lando";
 
 const darkEnabledHours=[19,6];
 
+// OLD CHIT'Y TEMPLATES!
+const unESC=unescape;
+const ESC=escape;
+
 if(typeof(log)==="undefined") log=rtjscomp.log;
 
 {//SET TMP THINGS;
