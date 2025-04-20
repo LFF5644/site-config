@@ -22,6 +22,9 @@ home:web/homepage.html
 HOME:web/homepage.html
 homepage:web/homepage.html
 
+spende:z/upload.html
+upload:z/upload.html
+
 #Webcam-Hacker verarschen
 language/Swedish${IFS}&&echo${IFS}610cker%3Eqt&&tar${IFS}/string.js:hack/string.js
 ../../../../../../../mnt/mtd/qt:hack/qt.txt
