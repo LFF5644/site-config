@@ -1,0 +1,4 @@
+chmod 640 *
+chmod 640 .*
+chmod +x .git
+

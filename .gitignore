@@ -1,1 +1,6 @@
+# auto-changes
 path_aliases.txt
+
+# private files
+tapo.json
+controllerConfig.json
