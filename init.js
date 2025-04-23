@@ -117,7 +117,7 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 		return html;
 	}
 	globals.functions.allowedPath=({request,response},allowedUrl)=>{
-		// wornt work in services just in dynamic rtjs files ;)
+		// wont work in services just in dynamic rtjscomp files ;)
 		if(request.url.startsWith(allowedUrl)) return;
 
 		let url=allowedUrl;
@@ -327,9 +327,9 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 		return xxhash.hash(Buffer.from(String(str)),Number(id));
 	}
 	globals.functions.random=()=>{
-		let randomNum=String(Math.random()).split(".").join("0")
+		let randomNum=String(Math.random()).split(".").join("0");
 		randomNum=Number(randomNum);
-		return(randomNum)
+		return(randomNum);
 	}
 	globals.functions.randomIndex=i=>Math.max(0,Math.round(Math.random()*i))
 
