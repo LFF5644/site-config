@@ -18,11 +18,14 @@ web/tplink/tapo
 web/tasker/tasker
 web/player/player
 web/player/server
+web/pictureSelector/background
 p/Chat/server
 p/TODO/storage
 p/TODO/server
 p/FamilyPlaner/server
 p/DeviceManager/server
 p/Weather/weather
+
+z/serviceWorkerTest/messaging
 
 #server/account/account.v3
