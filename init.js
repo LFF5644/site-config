@@ -64,13 +64,22 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 	globals.functions={};
 	globals.functions.importHead=data=>{
 		let {
+			autodetect=true,
 			botIndexAllow=true,
 			css=["/css/main.css?imports=*"],
 			cssDark=["/css/main.dark.css"],
+			cssLegacy=[],
 			description,
 			icon="/favicon.png",
 			icons,
-			input:{darkMode,bot,legacy=false,watch},
+			input:{
+				bot,
+				darkMode,
+				legacy=false,
+				legacyCSS=false,
+				user_agent,
+				watch,
+			},
 			keywords,
 			manifest,
 			script=[],
@@ -79,6 +88,13 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 			title,
 			watchAllow=false,
 		}=data;
+
+		if(user_agent&&autodetect){
+			if(user_agent.startsWith("Nokia")){
+				legacy=true;
+				legacyCSS=true;
+			}
+		}
 
 		tabs=tabs?Array(tabs).join("\t")+"\t":"";
 		let useDark=false;
@@ -94,10 +110,14 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 				.map(key=>`${tabs}<link rel=icon sizes=${key.split(" ").join("")} href=${(icons[key].includes(" ")||icons[key].includes("="))?'"'+icons[key]+'"':icons[key]}>`)
 				.join("\n")
 		}
+		if(legacyCSS==1||legacyCSS===true){
+			css=cssLegacy;
+		}
 
 		if(legacy&&scriptLegacy) script=scriptLegacy;
 
 		let html="";
+		html+=legacyCSS==1?"LEGACY":"";
 		html+=`<!--Hello ${bot?"Bot":"Developer"}!-->\n`;
 		html+=bot&&useDark?"<!--I disabled Dark-Mode for Bots!-->\n":"";
 		html+=title?`${tabs}<title>${title}</title>\n`:"";
