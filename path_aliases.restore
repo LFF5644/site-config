@@ -11,7 +11,11 @@ school-class:web/school/index.html
 school-class/homework.jpg:/web/school/data/HA-Tafel.jpg
 serverInfo:web/serverInfo/serverInfo.html
 
+NGGYU:web/cams/vid.api
+nggyu:web/cams/vid.api
+
 raw/player.event:web/player/get.api
+raw/explorer.event:web/listDir/stream.api
 
 blog/editor:web/blog/editor.html
 blog:web/blog/article.html
