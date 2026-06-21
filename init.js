@@ -12,7 +12,7 @@ const myShortName="LFF5644";
 const myName="Lando Fernandez-Falk";
 const myFistName="Lando";
 
-const darkEnabledHours=[15,8];
+const darkEnabledHours=[18,7];
 
 // OLD CHIT'Y TEMPLATES!
 const unESC=unescape;
