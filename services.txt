@@ -9,7 +9,7 @@ server/projects/projects
 #server/currently-playing/spotify
 server/controller/controller
 web/alexa/alexa-remote-noai
-web/alexa/alexa-remote
+#web/alexa/alexa-remote
 web/blog/blog
 web/minecraftServerInfo/minecraftServerInfo
 #web/listDir/explorer
@@ -27,7 +27,7 @@ p/TODO/storage
 p/TODO/server
 p/FamilyPlaner/server
 p/DeviceManager/server
-p/Weather/weather
+#p/Weather/weather
 
 z/serviceWorkerTest/messaging
 
