@@ -20,6 +20,9 @@ const ESC=escape;
 
 if(typeof(log)==="undefined") log=rtjscomp.log;
 
+// MAIN PROBLEM: init.js will be not supported in future!
+// [deprecated] run global init script
+
 {//SET TMP THINGS;
 	globals.tmp_head=function(title,inp=null,allowDark=true){
 		//log("OLD function tmp_head! please use importHead!")
@@ -51,7 +54,7 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 		res+=`\t<meta name=robots content=index>\n`
 		res+=`\t<link rel=stylesheet href=/css/main.css>\n`
 		res+=darkStyle;
-		res+=`\t<script src="${globals.vars["file_import.js"]}"></script>`
+		res+=`\t<script src="${rtjscomp.vars["file_import.js"]}"></script>`
 		return res;
 	}
 	globals.tmp_nameAsA=function(attrBoot=null){
@@ -61,8 +64,9 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 }
 
 {//SET globals.functions;
-	globals.functions={};
-	globals.functions.importHead=data=>{
+	rtjscomp.functions={};
+	globals.functions=rtjscomp.functions; // needed because legacy
+	rtjscomp.functions.importHead=data=>{
 		let {
 			autodetect=true,
 			botIndexAllow=true,
@@ -136,7 +140,7 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 
 		return html;
 	}
-	globals.functions.allowedPath=({request,response},allowedUrl)=>{
+	rtjscomp.functions.allowedPath=({request,response},allowedUrl)=>{
 		// wont work in services just in dynamic rtjscomp files ;)
 		if(request.url.startsWith(allowedUrl)) return;
 
@@ -148,7 +152,7 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 		response.setHeader("Location",url);
 		throw 302;
 	}
-	globals.functions.GetDark=function(inp=null){
+	rtjscomp.functions.GetDark=function(inp=null){
 		let darkStyle=false;
 		let date=new Date();
 		let hour=date.getHours();
@@ -161,7 +165,7 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 		}
 		return darkStyle;
 	}
-	globals.functions.ConfigLine=function(fileText,cange){
+	rtjscomp.functions.ConfigLine=function(fileText,cange){
 		let newFile="";
 		let line;
 		if(typeof(cange)!=="object"){log("[ConfigLine][ERROR]: typeof(cange) is not 'object'!!");return "ERROR typeof(cange) is not 'object' !"}
@@ -177,7 +181,7 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 		}
 		return(newFile)
 	}
-	globals.functions.GetLine=function(fileText,lineRead,returnType="all",errorType="log"){
+	rtjscomp.functions.GetLine=function(fileText,lineRead,returnType="all",errorType="log"){
 		let result="";
 
 		if(typeof(lineRead)!=="string"){
@@ -202,7 +206,7 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 		}
 		return("ERROR lineRead is not in fileText!");
 	}
-	globals.functions.GetLineSimple=(configToRead,configVarName)=>{
+	rtjscomp.functions.GetLineSimple=(configToRead,configVarName)=>{
 		const result=configToRead
 			.split("\n")
 			.filter(line=>
@@ -217,7 +221,7 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 		if(result.length==0){return undefined;}
 		else{return result[0].split("=")[1];}
 	}
-	globals.functions.ReadFile=function(fileName,coding="utf8"){
+	rtjscomp.functions.ReadFile=function(fileName,coding="utf8"){
 		try{
 			const file=fs.readFileSync(fileName,coding);
 			//log("fn: [ReadFile]: read file '"+fileName+"'");
@@ -227,13 +231,13 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 			return false;
 		}
 	}
-	globals.functions.ReadJsonFile=fileName=>{
-		let res=globals.functions.ReadFile(fileName,"utf8");
+	rtjscomp.functions.ReadJsonFile=fileName=>{
+		let res=rtjscomp.functions.ReadFile(fileName,"utf8");
 		try{res=JSON.parse(res)}
 		catch(e){res=false;}
 		return res;
 	}
-	globals.functions.WriteFile=function(fileName,fileData="",coding="utf-8"){
+	rtjscomp.functions.WriteFile=function(fileName,fileData="",coding="utf-8"){
 		try{
 			const file=fs.writeFileSync(fileName,String(fileData),coding);
 			//log("fn: [WriteFile]: write file '"+fileName+"'");
@@ -243,7 +247,7 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 			return false;
 		}
 	}
-	globals.functions.CreateDir=function(dir){
+	rtjscomp.functions.CreateDir=function(dir){
 		try{
 			fs.mkdirSync(dir);
 			//log("fn: [CreateDir]: create dir '"+dir+"'");
@@ -253,43 +257,43 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 			return false;
 		}
 	}
-	globals.functions.readFileAsync=function(...args){return new Promise(resolve=>{
+	rtjscomp.functions.readFileAsync=function(...args){return new Promise(resolve=>{
 		fs.readFile(...args,(err,data)=>{
 			if(err){console.log(err);resolve(null);return;};
 			resolve(data);
 			return;
 		});
 	})}
-	globals.functions.renameAsync=function(oldPath,newPath){return new Promise((resolve,reject)=>{
+	rtjscomp.functions.renameAsync=function(oldPath,newPath){return new Promise((resolve,reject)=>{
 		fs.rename(oldPath,newPath,error=>{
 			if(error) reject(error);
 			else resolve();
 			return;
 		});
 	})}
-	globals.functions.rmFileAsync=function(...args){return new Promise(resolve=>{
+	rtjscomp.functions.rmFileAsync=function(...args){return new Promise(resolve=>{
 		fs.rm(...args,(err)=>{
 			if(err){resolve(false);return;};
 			resolve(true);
 			return;
 		});
 	})}
-	globals.functions.rmDirAsync=function(...args){return new Promise(resolve=>{
+	rtjscomp.functions.rmDirAsync=function(...args){return new Promise(resolve=>{
 		fs.rmdir(...args,(err)=>{
 			if(err){console.log(err);resolve(false);return}
 			resolve(true);
 			return;
 		});
 	})}
-	globals.functions.writeFileAsync=function(...args){return new Promise(resolve=>{
+	rtjscomp.functions.writeFileAsync=function(...args){return new Promise(resolve=>{
 		fs.writeFile(...args,(err)=>{
 			if(err) console.log(err);
 			resolve(err);
 			return;
 		});
 	})}
-	globals.functions.readJsonFileAsync=function(path){return new Promise(async resolve=>{
-		const file=await globals.functions.readFileAsync(path,"utf-8")
+	rtjscomp.functions.readJsonFileAsync=function(path){return new Promise(async resolve=>{
+		const file=await rtjscomp.functions.readFileAsync(path,"utf-8")
 		if(!file){
 			resolve(null);
 			return;
@@ -302,14 +306,14 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 			return;
 		}
 	})}
-	globals.functions.writeJsonFileAsync=function(path,data){
+	rtjscomp.functions.writeJsonFileAsync=function(path,data){
 		data=JSON.stringify(data,null,"\t")+"\n";
-		return globals.functions.writeFileAsync(path,data,"utf-8");
+		return rtjscomp.functions.writeFileAsync(path,data,"utf-8");
 	}
-	globals.functions.existsAsync=function(path){return new Promise(resolve=>{
+	rtjscomp.functions.existsAsync=function(path){return new Promise(resolve=>{
 		fs.exists(path,resolve);
 	})}
-	globals.functions.createDirAsync=function(...args){return new Promise(resolve=>{
+	rtjscomp.functions.createDirAsync=function(...args){return new Promise(resolve=>{
 		try{
 			fs.mkdir(...args,()=>resolve());
 		}catch(e){
@@ -317,19 +321,19 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 			return;
 		}
 	})}
-	globals.functions.ReadDir=function(dir){
+	rtjscomp.functions.ReadDir=function(dir){
 		return(fs.readdirSync(dir));
 	}
-	globals.functions.decodeBase64=function(textToDecode,to="utf8"){
+	rtjscomp.functions.decodeBase64=function(textToDecode,to="utf8"){
 		return(String(Buffer.from(textToDecode,"base64").toString(to)));
 	}
-	globals.functions.encodeBase64=function(textToEncode){
+	rtjscomp.functions.encodeBase64=function(textToEncode){
 		return(String(Buffer.from(textToEncode).toString("base64")));
 	}
-	globals.functions.codeify=function(text){
-		return(globals.functions.REPLACEALL(String(text),[["&","&amp;"],["<","&lt;"],[">","&gt;"],['"',"&quot;"]]));
+	rtjscomp.functions.codeify=function(text){
+		return(rtjscomp.functions.REPLACEALL(String(text),[["&","&amp;"],["<","&lt;"],[">","&gt;"],['"',"&quot;"]]));
 	}
-	globals.functions.REPLACEALL=function(text="Hallo Welt!",replace=[[" ","_"],["!","?"]]){
+	rtjscomp.functions.REPLACEALL=function(text="Hallo Welt!",replace=[[" ","_"],["!","?"]]){
 		if(typeof(replace)!="object"){
 			let error="WRONG FORMAT ONLY LISTS ACCSEPTED!"
 			console.log(`ERROR in REPLACEALL: "${error}"`)
@@ -342,23 +346,23 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 		}
 		return text;
 	}
-	globals.functions.xxhash=(str,id=0)=>{
+	rtjscomp.functions.xxhash=(str,id=0)=>{
 		// require xxhash;
 		return xxhash.hash(Buffer.from(String(str)),Number(id));
 	}
-	globals.functions.random=()=>{
+	rtjscomp.functions.random=()=>{
 		let randomNum=String(Math.random()).split(".").join("0");
 		randomNum=Number(randomNum);
 		return(randomNum);
 	}
-	globals.functions.randomIndex=i=>Math.max(0,Math.round(Math.random()*i))
+	rtjscomp.functions.randomIndex=i=>Math.max(0,Math.round(Math.random()*i))
 
-	globals.functions.AddSearch=(search,value=undefined,sep="&",useCodeify=true)=>{
+	rtjscomp.functions.AddSearch=(search,value=undefined,sep="&",useCodeify=true)=>{
 		if(sep==null){sep="&"}
-		if(useCodeify){value=globals.functions.codeify(value)}
+		if(useCodeify){value=rtjscomp.functions.codeify(value)}
 		return(sep+search+"="+ESC(value));
 	}
-	globals.functions.tofsStr=str=>{
+	rtjscomp.functions.tofsStr=str=>{
 		const replace_char="_";
 		let allowedChars="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		allowedChars+="abcdefghijklmnopqrstuvwxyz";
@@ -381,26 +385,26 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 		}
 		return(result);
 	}
-	globals.functions.decodeParameter=parameter=>{
+	rtjscomp.functions.decodeParameter=parameter=>{
 		parameter=unESC(parameter);
-		parameter=globals.functions.codeify(parameter);
+		parameter=rtjscomp.functions.codeify(parameter);
 		return parameter;
 	}
-	globals.functions.jsonStringify=(data,nice=true)=>{
+	rtjscomp.functions.jsonStringify=(data,nice=true)=>{
 		if(nice){return JSON.stringify(data,null,2).split("  ").join("\t")}
 		else{return JSON.stringify(data)}
 	}
-	globals.functions.userAgentToJSON=ua=>{
+	rtjscomp.functions.userAgentToJSON=ua=>{
 		const agent=useragent.lookup(ua).toJSON();
 		return agent;
 	}
-	globals.functions.decodeUserAgent=(ua,long=false)=>{
-		const agent=globals.functions.userAgentToJSON(ua);
+	rtjscomp.functions.decodeUserAgent=(ua,long=false)=>{
+		const agent=rtjscomp.functions.userAgentToJSON(ua);
 		const browser=agent.family+(agent.major=="0"?"":" "+agent.major);
 		const os=agent.os.family+(agent.os.major=="0"?"":" "+agent.os.major);
 		return long?`${browser} auf ${os}`:browser;
 	}
-	globals.functions.datify=(num=Date.now(),format="[day].[month].[year] => [hour]:[minute]")=>{
+	rtjscomp.functions.datify=(num=Date.now(),format="[day].[month].[year] => [hour]:[minute]")=>{
 		const date=new Date(num);
 		const lib={
 			day:String(date.getDate()).padStart(2,"0"),
@@ -417,11 +421,11 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 				return eval(str);
 			}catch(e){return format;}
 	}
-	globals.functions.jsonParseTry=text=>{
+	rtjscomp.functions.jsonParseTry=text=>{
 		try{return JSON.parse(text);}
 		catch(e){return text;}
 	}
-	globals.functions.overflowRemove=(text,maxLength,replaceTo="...")=>{
+	rtjscomp.functions.overflowRemove=(text,maxLength,replaceTo="...")=>{
 		const length=text.length;
 		if(length<=maxLength){return text}
 		let t="";
@@ -436,49 +440,50 @@ if(typeof(log)==="undefined") log=rtjscomp.log;
 }
 
 {//SET GLOBAL PATH/FILES;
-	globals.vars={};
-	globals.vars["file_import.js"]="/scripts/import.js";
-	globals.vars["api_login.api"]="/server/account/login.api";
-	globals.vars["api_register.api"]="/server/account/register.api";
-	globals.vars["api_test.api"]="/server/test.api";
-	globals.vars["api_listDir.api"]="/server/listDir.api";
-	globals.vars["api_writeLog.api"]="/server/writeLog.api";
-	globals.vars["folder_sounds"]="/files/sounds";
-	globals.vars["folder_videos"]="/files/videos";
-	globals.vars["folder_img"]="/files/img";
-	globals.vars["folder_icon"]="/files/img/icon";
+	rtjscomp.vars={};
+	globals.vars=rtjscomp.vars; // for old projects
+	rtjscomp.vars["file_import.js"]="/scripts/import.js";
+	rtjscomp.vars["api_login.api"]="/server/account/login.api";
+	rtjscomp.vars["api_register.api"]="/server/account/register.api";
+	rtjscomp.vars["api_test.api"]="/server/test.api";
+	rtjscomp.vars["api_listDir.api"]="/server/listDir.api";
+	rtjscomp.vars["api_writeLog.api"]="/server/writeLog.api";
+	rtjscomp.vars["folder_sounds"]="/files/sounds";
+	rtjscomp.vars["folder_videos"]="/files/videos";
+	rtjscomp.vars["folder_img"]="/files/img";
+	rtjscomp.vars["folder_icon"]="/files/img/icon";
 }
 
 {//EDIT path_aliases.txt
 	log("EDIT 'path_aliases.txt'...")
-	let pathAlias=globals.functions.ReadFile("config/path_aliases.txt");
-	let pathAlias_restore=globals.functions.ReadFile("config/path_aliases.restore");
-	let folders=globals.functions.ReadDir("public/p/");
+	let pathAlias=rtjscomp.functions.ReadFile("config/path_aliases.txt");
+	let pathAlias_restore=rtjscomp.functions.ReadFile("config/path_aliases.restore");
+	let folders=rtjscomp.functions.ReadDir("public/p/");
 
-	globals.functions.WriteFile("config/path_aliases.txt",pathAlias_restore);
+	rtjscomp.functions.WriteFile("config/path_aliases.txt",pathAlias_restore);
 	pathAlias=pathAlias_restore;
 
 	let folder;
 	for(folder of folders){
-		let folder_path=globals.functions.ReadDir("public/p/"+folder+"/");
+		let folder_path=rtjscomp.functions.ReadDir("public/p/"+folder+"/");
 		let file;
 		let add="\n"
 		for(file of folder_path){
 
 			if(file.includes("index")){
-				add+=`${folder}:/p/${folder}/${file}\n`;
-				add+=`${folder.toLowerCase()}:/p/${folder}/${file}\n`;
+				add+=`${folder}:p/${folder}/${file}\n`;
+				add+=`${folder.toLowerCase()}:p/${folder}/${file}\n`;
 			}else{
-				add+=`${folder}/${file}:/p/${folder}/${file}\n`;
-				add+=`${folder.toLowerCase()}/${file.toLowerCase()}:/p/${folder}/${file}\n`;
-				add+=`${folder}/${file.toLowerCase()}:/p/${folder}/${file}\n`;
-				add+=`${folder.toLowerCase()}/${file}:/p/${folder}/${file}\n`;
+				add+=`${folder}/${file}:p/${folder}/${file}\n`;
+				add+=`${folder.toLowerCase()}/${file.toLowerCase()}:p/${folder}/${file}\n`;
+				add+=`${folder}/${file.toLowerCase()}:p/${folder}/${file}\n`;
+				add+=`${folder.toLowerCase()}/${file}:p/${folder}/${file}\n`;
 			}
 		}
 		pathAlias+=add;
 		add="";
 
 	}
-	globals.functions.WriteFile("config/path_aliases.txt",pathAlias);
+	rtjscomp.functions.WriteFile("config/path_aliases.txt",pathAlias);
 	log("EDIT 'path_aliases.txt' FINISH!")
 }

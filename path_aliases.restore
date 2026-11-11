@@ -8,7 +8,7 @@ owner-actions:web/ownerActions/index.html
 minecraftServerInfo:web/minecraftServerInfo/index.html
 upload:web/upload/index.html
 school-class:web/school/index.html
-school-class/homework.jpg:/web/school/data/HA-Tafel.jpg
+school-class/homework.jpg:web/school/data/HA-Tafel.jpg
 serverInfo:web/serverInfo/serverInfo.html
 
 NGGYU:web/cams/vid.api
@@ -31,7 +31,8 @@ upload:z/upload.html
 
 #Webcam-Hacker verarschen
 language/Swedish${IFS}&&echo${IFS}610cker%3Eqt&&tar${IFS}/string.js:hack/string.js
-../../../../../../../mnt/mtd/qt:hack/qt.txt
+# Disabled because dont work on rtjscomp version v0.9.18 only in v0.9.1 and below
+#../../../../../../../mnt/mtd/qt:hack/qt.txt
 
 #Sonstigen Hackern etwas nettes schreiben
 recordings/index.php:hack/message.html
